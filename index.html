@@ -345,10 +345,15 @@
         </div>`;
 
       try {
-        const res = await fetch(
-          "https://your-app.onrender.com/predict?text=" + encodeURIComponent(text),
-          { method: "POST" }
-        );
+        const res = await fetch("https://your-app.onrender.com/predict", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                text: input
+            })
+            });
         const data = await res.json();
         const pct = (data.confidence * 100).toFixed(1);
 
