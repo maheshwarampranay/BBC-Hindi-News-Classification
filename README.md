@@ -135,6 +135,53 @@ Source: https://huggingface.co/datasets/ai4bharat/indic_glue/viewer/bbca.hi
 
 ---
 
+## 🌐 Live Deployment
+
+🎉 **The XLM-RoBERTa model is now live!**
+
+**Try it here:** [https://maheshwarampranay.github.io/BBC-Hindi-News-Classification/](https://maheshwarampranay.github.io/BBC-Hindi-News-Classification/)
+
+### Deployment Architecture
+
+- **Model Hosting:** [Hugging Face Spaces](https://huggingface.co/spaces/pranaymaheshwaram/HINDI-NEWS-CLASSIFIER)
+- **UI Hosting:** GitHub Pages  
+- **Communication:** RESTful API (POST requests)
+
+### API Endpoint
+
+```
+POST https://pranaymaheshwaram-hindi-news-classifier.hf.space/predict
+
+Request Body:
+{
+  "text": "your Hindi news text here"
+}
+
+Response:
+{
+  "prediction": "category_name",
+  "confidence": 0.85
+}
+```
+
+### Performance Notes
+
+- **First request:** ~20–60 sec (model loading / cold start)
+- **Subsequent requests:** ~0.5–2 sec  
+- **Max input length:** 512 tokens (long inputs are truncated)
+
+### Local Setup (Optional)
+
+To run the model locally:
+
+```bash
+pip install transformers torch sentencepiece fastapi uvicorn
+
+uvicorn app:app --reload
+```
+
+---
+
 ## 🚀 Future Work
 
 - Data augmentation (back-translation, paraphrasing)
