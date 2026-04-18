@@ -345,15 +345,18 @@
         </div>`;
 
       try {
-        const res = await fetch("https://your-app.onrender.com/predict", {
-            method: "POST",
-            headers: {
+          const res = await fetch(
+            "https://pranaymaheshwaram-hindi-news-classifier.hf.space/predict",
+            {
+              method: "POST",
+              headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                text: input
-            })
-            });
+              },
+              body: JSON.stringify({
+                text: text
+              })
+            }
+          );
         const data = await res.json();
         const pct = (data.confidence * 100).toFixed(1);
 
